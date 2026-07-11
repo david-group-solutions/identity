@@ -13,4 +13,7 @@
   <Folder Name="/src/">
     <Project Path="src/DavidGroup.Core.Identity/DavidGroup.Core.Identity.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DavidGroup.Core.Identity.Tests/DavidGroup.Core.Identity.Tests.csproj" />
+  </Folder>
 </Solution>
