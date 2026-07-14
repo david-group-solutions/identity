@@ -4,6 +4,9 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Folder Name="/samples/">
+    <Project Path="samples/DavidGroup.Core.Identity.Samples.WebApi/DavidGroup.Core.Identity.Samples.WebApi.csproj" />
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path="Directory.Build.props" />
     <File Path="Directory.Version.props" />
