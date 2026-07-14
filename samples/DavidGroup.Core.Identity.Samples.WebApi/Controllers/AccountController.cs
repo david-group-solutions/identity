@@ -16,7 +16,7 @@ namespace DavidGroup.Core.Identity.Samples.WebApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class LoginController(IOptions<JwtOptions> jwtOptions) : IdentityController
+public class AccountController(IOptions<JwtOptions> jwtOptions) : IdentityController
 {
     [AllowAnonymous]
     [HttpGet("login")]
