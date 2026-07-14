@@ -30,10 +30,96 @@ New samples are added continuously as more features are developed.
 
 ## 📦 Key Features
 
-### TODO: Coming soon
+### How to add Identity Authentication & Authorization
+
+#### Program.cs
 
 ```csharp
-// TODO: Coming soon
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddIdentityAuthentication(builder.Configuration);
+builder.Services.AddAuthorization();
+
+builder.Services.AddControllersWithIdentity();
+
+WebApplication app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
+```
+
+#### appsettings.json
+
+```json
+{
+    "JwtOptions": {
+        "Issuer": "https://auth.example.com/",
+        "Audience": "https://example.com/",
+        "SecretKey": "a-string-secret-at-least-256-bits-long"
+    }
+}
+```
+
+### Attributes
+
+```csharp
+[Authorize]
+[ApiController]
+[Route("api/[controller]")]
+public class BookstoreController : ControllerBase
+{
+    private readonly string[] _books =
+    [
+        "The Shining",
+        "Needful Things",
+        "IT",
+        "Misery",
+        "Doctor Sleep",
+        "Cell",
+        "The Institute",
+        "Mr. Mercedes",
+        "The Green Mile"
+    ];
+
+    [LicenseAndPrivacyPolicy("v1.2", "v1.5")] // Requires license and privacy policy to be accepted
+    [HasPermission(Permissions.Books.Read)]   // Requires defined permission
+    [FreshSession(60)]                        // Session must be new and within specified seconds
+    [EmailConfirmed]                          // Email address must be confirmed
+    [PhoneConfirmed]                          // Phone number must be confirmed
+    [HttpGet("all")]
+    public IActionResult All()
+    {
+        return Ok(_books);
+    }
+}
+```
+
+### IdentityController
+
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+public class LoginController(IOptions<JwtOptions> jwtOptions) : IdentityController
+{
+    [Authorize]
+    [HttpGet("who-am-i")]
+    public IActionResult WhoAmI()
+    {
+        if (!TryGetClaim(DavidGroupClaimTypes.AuthTime, out long authTimeInUnixSeconds))
+            return NotFound();
+
+        return Ok(new
+        {
+            Id = GetRequiredClaim<Guid>(JwtRegisteredClaimNames.Sub),
+            Email = GetRequiredClaim(DavidGroupClaimTypes.Email),
+            AuthTime = DateTimeOffset.FromUnixTimeSeconds(authTimeInUnixSeconds).ToLocalTime()
+        });
+    }
+}
 ```
 
 ## 🤝 Contributing
