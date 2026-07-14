@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+
+    <NoWarn>NU1903;1591</NoWarn>
+
+    <UserSecretsId>6aaa6532-8405-4aca-9619-891d04884e6b</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DavidGroup.Core.SwaggerSetup" Version="1.0.1"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DavidGroup.Core.Identity\DavidGroup.Core.Identity.csproj"/>
+  </ItemGroup>
+
+</Project>
