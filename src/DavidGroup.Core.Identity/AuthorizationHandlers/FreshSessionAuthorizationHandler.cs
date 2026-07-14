@@ -22,12 +22,7 @@ public sealed class FreshSessionAuthorizationHandler : AuthorizationHandler<Fres
         if (UserHelper.IsAuthenticatedWithin(context.User, TimeSpan.FromSeconds(requirement.TokenIssuanceAgeInSeconds)))
             context.Succeed(requirement);
         else
-        {
-            context.Fail(new AuthorizationFailureReason(
-                this,
-                "Re-authentication is required."
-            ));
-        }
+            context.Fail(new AuthorizationFailureReason(this, "Re-authentication is required."));
 
         return Task.CompletedTask;
     }

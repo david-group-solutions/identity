@@ -22,6 +22,8 @@ public sealed class EmailConfirmedAuthorizationHandler : AuthorizationHandler<Em
     {
         if (context.User.TryGetClaim(DavidGroupClaimTypes.EmailConfirmed, out bool confirmed) && confirmed)
             context.Succeed(requirement);
+        else
+            context.Fail(new AuthorizationFailureReason(this, "Email not confirmed."));
 
         return Task.CompletedTask;
     }

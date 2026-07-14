@@ -39,7 +39,9 @@ public class DefaultIdentityAuthorizationPolicyProvider(IOptions<AuthorizationOp
         {
             IEnumerable<PermissionRequirement> requirements = policyName[PermissionRequirement.Prefix.Length..]
                 .Split(',', StringSplitOptions.RemoveEmptyEntries)
-                .Select(p => new PermissionRequirement(p.Trim()));
+                .Select(p => p.Trim())
+                .Distinct()
+                .Select(p => new PermissionRequirement(p));
 
             return Build([..requirements]);
         }

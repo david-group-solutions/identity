@@ -22,6 +22,8 @@ public sealed class PhoneConfirmedAuthorizationHandler : AuthorizationHandler<Ph
     {
         if (context.User.TryGetClaim(DavidGroupClaimTypes.PhoneConfirmed, out bool confirmed) && confirmed)
             context.Succeed(requirement);
+        else
+            context.Fail(new AuthorizationFailureReason(this, "Phone not confirmed."));
 
         return Task.CompletedTask;
     }

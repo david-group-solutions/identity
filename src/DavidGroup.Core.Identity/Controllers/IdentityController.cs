@@ -29,5 +29,5 @@ public class IdentityController : ControllerBase
     /// for the current user using <see cref="ClaimsPrincipalExtensions.TryGetClaim"/>.
     /// </summary>
     protected bool TryGetClaim<T>(string claimType, out T? value) where T : IParsable<T>
-        => HttpContext.User.TryGetClaim<T>(claimType, out value);
+        => HttpContext.User.TryGetClaim(claimType, out value);
 }

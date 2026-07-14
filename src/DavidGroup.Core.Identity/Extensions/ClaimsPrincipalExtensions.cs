@@ -46,7 +46,7 @@ public static class ClaimsPrincipalExtensions
         where T : IParsable<T>
     {
         string valueStr = user.FindFirstValue(claimType)
-                          ?? throw new InvalidOperationException($"Claim '{claimType}' was not found.");;
+                          ?? throw new InvalidOperationException($"Claim '{claimType}' was not found.");
 
         return T.Parse(valueStr, provider: null);
     }
