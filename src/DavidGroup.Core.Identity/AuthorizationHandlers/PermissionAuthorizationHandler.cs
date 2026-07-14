@@ -25,6 +25,11 @@ public sealed class PermissionAuthorizationHandler : AuthorizationHandler<Permis
 
         if (permissions.Any(permission => permission == requirement.Permission))
             context.Succeed(requirement);
+        else
+        {
+            context.Fail(new AuthorizationFailureReason(this,
+                $"You do not have permission {requirement.Permission} to access this resource"));
+        }
 
         return Task.CompletedTask;
     }

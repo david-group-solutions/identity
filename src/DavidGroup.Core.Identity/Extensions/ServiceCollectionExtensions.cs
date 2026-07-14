@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 
@@ -136,7 +137,7 @@ public static class ServiceCollectionExtensions
                 },
                 OnTokenValidated = context =>
                 {
-                    string? typ = context.Principal?.FindFirstValue(DavidGroupClaimTypes.Typ);
+                    string? typ = context.Principal?.FindFirstValue(JwtRegisteredClaimNames.Typ);
                     if (typ == DavidGroupTokenTypes.TwoFactorAuthentication)
                         context.Fail("Two factor authentication challenge token is not valid for API access.");
 

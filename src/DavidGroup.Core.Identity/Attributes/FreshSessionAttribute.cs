@@ -23,6 +23,6 @@ public sealed class FreshSessionAttribute : AuthorizeAttribute
     /// </param>
     public FreshSessionAttribute(long tokenIssuanceAgeInSeconds)
     {
-        Policy = $"{FreshSessionRequirement.Prefix}:{tokenIssuanceAgeInSeconds}";
+        Policy = $"{FreshSessionRequirement.Prefix}{tokenIssuanceAgeInSeconds}";
     }
 }

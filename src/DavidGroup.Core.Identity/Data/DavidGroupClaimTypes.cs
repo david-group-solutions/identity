@@ -42,44 +42,4 @@ public static class DavidGroupClaimTypes
     public const string PrivacyPolicyVersion = ClaimTypeNamespace + "privacy_policy_version";
 
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-
-    /// <summary>
-    /// See <see href="https://datatracker.ietf.org/doc/html/rfc7519#section-4" />
-    /// </summary>
-    public const string Iss = "iss";
-
-    /// <summary>
-    /// See <see href="https://datatracker.ietf.org/doc/html/rfc7519#section-4" />
-    /// </summary>
-    public const string Sub = "sub";
-
-    /// <summary>
-    /// See <see href="https://datatracker.ietf.org/doc/html/rfc7519#section-4" />
-    /// </summary>
-    public const string Aud = "aud";
-
-    /// <summary>
-    /// See <see href="https://datatracker.ietf.org/doc/html/rfc7519#section-4" />
-    /// </summary>
-    public const string Exp = "exp";
-
-    /// <summary>
-    /// See <see href="https://datatracker.ietf.org/doc/html/rfc7519#section-4" />
-    /// </summary>
-    public const string Nbf = "nbf";
-
-    /// <summary>
-    /// See <see href="https://datatracker.ietf.org/doc/html/rfc7519#section-4" />
-    /// </summary>
-    public const string Iat = "iat";
-
-    /// <summary>
-    /// See <see href="https://datatracker.ietf.org/doc/html/rfc7519#section-4" />
-    /// </summary>
-    public const string Jti = "jti";
-
-    /// <summary>
-    /// See <see href="https://datatracker.ietf.org/doc/html/rfc7519#section-5" />
-    /// </summary>
-    public const string Typ = "typ";
 }

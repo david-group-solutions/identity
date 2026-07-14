@@ -26,6 +26,6 @@ public sealed class LicenseAndPrivacyPolicyAttribute : AuthorizeAttribute
     /// </param>
     public LicenseAndPrivacyPolicyAttribute(string licenceVersion, string privacyPolicyVersion)
     {
-        Policy = $"{LicenseAndPrivacyPolicyRequirement.Prefix}:{licenceVersion}:{privacyPolicyVersion}";
+        Policy = $"{LicenseAndPrivacyPolicyRequirement.Prefix}{licenceVersion}:{privacyPolicyVersion}";
     }
 }

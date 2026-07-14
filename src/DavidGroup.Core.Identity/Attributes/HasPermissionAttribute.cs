@@ -28,6 +28,6 @@ public sealed class HasPermissionAttribute : AuthorizeAttribute
     {
         string joinedPermissions = string.Join(",", permissions);
 
-        Policy = $"{PermissionRequirement.Prefix}:{joinedPermissions}";
+        Policy = $"{PermissionRequirement.Prefix}{joinedPermissions}";
     }
 }
