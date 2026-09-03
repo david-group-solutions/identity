@@ -11,7 +11,6 @@ public static class DavidGroupClaimTypes
 
     // Authentication
     public const string SessionIdentifier = ClaimTypeNamespace + "session_identifier";
-    public const string Amr = ClaimTypeNamespace + "amr";
     public const string AuthTime = ClaimTypeNamespace + "auth_time";
 
     // Authorization
